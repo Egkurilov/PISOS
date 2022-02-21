@@ -1,0 +1,102 @@
+{% include "components/header.html" %}
+
+<div class="d-flex align-items-center p-3 my-3 text-white bg-success rounded shadow-sm">
+    <div class="lh-1">
+        <h1 class="h6 mb-0 text-white lh-1">Success</h1>
+    </div>
+</div>
+<div class="d-flex align-items-center p-3 my-3 text-white bg-warning rounded shadow-sm">
+    <div class="lh-1">
+        <h1 class="h6 mb-0 text-dark lh-1">Warning</h1>
+    </div>
+</div>
+<div class="d-flex align-items-center p-3 my-3 text-white bg-danger rounded shadow-sm">
+    <div class="lh-1">
+        <h1 class="h6 mb-0 text-white lh-1">Danger</h1>
+    </div>
+</div>
+
+{{ projecties }}
+{% for project in projecties %}
+<div class="row">
+    <div class="col">
+        <div class="card border-none project mb-3">
+
+          <div class="card-header project mb-3">{{ project.category__name }}</div>
+          <div class="card-body project">
+            <div class="row g-3 mb-2">
+                <div class="col-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ project.name }}</h5>
+                            <p class="card-text">{{ project.discription }}</p>
+
+                        </div>
+                    </div>
+                </div>
+</div>
+{% endfor %}
+
+{% comment %}
+<div class="row">
+    <div class="col">
+        <div class="card border-none project mb-3">
+          <div class="card-header project mb-3">Категория 2</div>
+          <div class="card-body project">
+            <div class="row g-3 mb-2">
+                <div class="col-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Название проекта</h5>
+                            <p class="card-text">Описание проекта</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Название проекта</h5>
+                            <p class="card-text">Описание проекта</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Название проекта</h5>
+                            <p class="card-text">Описание проекта</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Название проекта</h5>
+                            <p class="card-text">Описание проекта</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Название проекта</h5>
+                            <p class="card-text">Описание проекта</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Название проекта</h5>
+                            <p class="card-text">Описание проекта</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>{% endcomment %}
+
+
+{% include "components/footer.html" %}
