@@ -14,9 +14,11 @@ class SquareView(View):
         for data in projecties:
             data_dict.update({data['category__id']: {}})
             data_dict[data['category__id']].update({data['category__name']: []})
+
         for data in projecties:
-            data_dict[data['category__id']][data['category__name']].append([data['name'], data['description']])
-        print(data_dict)
+            data_dict[data['category__id']][data['category__name']]\
+                .append({'project' : data['name'], 'description': data['description']})
+
         return render(request, 'square/Square.html', context={'projecties': data_dict})
 
 
