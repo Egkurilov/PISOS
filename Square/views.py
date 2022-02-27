@@ -6,21 +6,36 @@ from .models import Category, Project
 import re
 
 
+# class SquareView(View):
+#     def get(self, request):
+#         data_dict = {}
+#         projecties = Project.objects.values('id', 'description', 'name', 'category__name', 'category__id')
+#
+#         for data in projecties:
+#             data_dict.update({data['category__id']: {}})
+#             data_dict[data['category__id']].update({data['category__name']: []})
+#
+#         for data in projecties:
+#             data_dict[data['category__id']][data['category__name']]\
+#                 .append({'project' : data['name'], 'description': data['description']})
+#
+#
+#
+#         return render(request, 'square/Square.html', context={'projecties': data_dict})
+
+
 class SquareView(View):
     def get(self, request):
         data_dict = {}
+
         projecties = Project.objects.values('id', 'description', 'name', 'category__name', 'category__id')
 
         for data in projecties:
-            data_dict.update({data['category__id']: {}})
-            data_dict[data['category__id']].update({data['category__name']: []})
-
-        for data in projecties:
-            data_dict[data['category__id']][data['category__name']]\
-                .append({'project' : data['name'], 'description': data['description']})
+            data_dict.setdefault(data['category__name'], {}).setdefault(data['category__id'], []).append(
+                {'project_id': data['id'], 'project_name': data['name'], 'description': data['description']}
+            )
 
         return render(request, 'square/Square.html', context={'projecties': data_dict})
-
 
 
 class AddCategoryView(View):

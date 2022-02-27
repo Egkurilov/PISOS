@@ -1,0 +1,28 @@
+{% include "components/header.html" %}
+
+<h1>Текущие добавленные  задачи</h1>
+{% for task in exists_task %}
+        <li>
+         {{ task }}
+        </li>
+
+{% endfor %}
+
+<h1>Форма для добавления  задачи </h1>
+<form id="data" method="post">
+  {% csrf_token %}
+    <select  id="project_name_input" selected="selected" name="task_type" class="form-select" aria-label="Default select example">
+            <option selected>Тип Задачи</option>
+            {% for tasks in task_type %}
+            <option  value="{{ tasks.id }}">{{ tasks.type }}</option>
+            {% endfor %}
+       </select></p>
+      <p><input class="form-control" placeholder="Имя задачи" name="task_name" form="data"></p>
+        <div>
+          <input type="checkbox" id="enable-box" value="1" name="enable-box" checked>
+          <label for="enable-box">Включен</label>
+        </div>
+      <p><input type="submit" value="Отправить форму" form="data"></p>
+</form>
+
+{% include "components/footer.html" %}

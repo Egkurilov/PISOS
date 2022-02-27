@@ -1,0 +1,26 @@
+{% include "components/header.html" %}
+
+
+<h2>Hi BOARD #{{ id }}</h2>
+        <div class="row">
+            <div class="col">
+                <div class="card border-none project mb-3">
+                    <div class="card-header project mb-3">123</div>
+                    <div class="card-body project">
+                        <div class="row g-3 mb-2">
+                            {% for items in value1 %}
+                            <div class="col-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><a href="/board/{{ items.project_id }}" class="link-dark stretched-link text-decoration-none">{{ 456 }}</a></h5>
+                                        <p class="card-text">123456}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% include "components/footer.html" %}

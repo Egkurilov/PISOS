@@ -1,3 +1,12 @@
+{% include "components/header.html" %}
+
+<a href="/admin/task/type/add">admin/task/type/add</a>
+    <br>
+    <br>
+<a href="/admin/task/add">admin/task/add</a>
+    <br>
+    <br>
+
 {%  if task_list %}
         <ul>
 {% for task in task_list %}
@@ -7,5 +16,8 @@
 {% endfor %}
         </ul>
 {% else %}
-    <p>zadach net</p>
+    <p>Акивных задач для выполнения нет.</p>
 {% endif %}
+
+
+{% include "components/footer.html" %}

@@ -17,9 +17,10 @@ Including another URLconf
 from django.urls import path
 
 
-from Admin.views import LoginView, DashboardView
+from Admin.views import LoginView, DashboardView, TaskTypeAddView, TaskAddView
 from Calendar.views import CalendarView, AddCalendarView
 from Square.views import SquareView, AddCategoryView, AddProjectView
+from Board.views import BoardView
 
 urlpatterns = [
         path('', SquareView.as_view()),
@@ -28,7 +29,11 @@ urlpatterns = [
 
         path('admin/login', LoginView.as_view()),
         path('admin/dashboard', DashboardView.as_view()),
+        path('admin/task/type/add', TaskTypeAddView.as_view()),
+        path('admin/task/add', TaskAddView.as_view()),
 
         path('calendar/', CalendarView.as_view()),
         path('calendar/add', AddCalendarView.as_view()),
+
+        path('board/<int:pk>/', BoardView.as_view()),
 ]

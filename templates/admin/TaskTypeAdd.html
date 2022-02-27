@@ -1,0 +1,25 @@
+{% include "components/header.html" %}
+
+<h1>Текущие добавленные типы задач</h1>
+
+
+
+{% for task in exists_task_type %}
+        <li>
+         {{ task }}
+        </li>
+
+{% endfor %}
+
+<h1>Форма для добавления  задачи </h1>
+
+
+<form id="data" method="post">
+  {% csrf_token %}
+      <p><input class="form-control" placeholder="Тип Задачи" name="task_type" form="data"></p>
+      <p><input class="form-control" placeholder="Описание" name="description" form="data"></p>
+
+      <p><input type="submit" value="Отправить форму" form="data"></p>
+</form>
+
+{% include "components/footer.html" %}

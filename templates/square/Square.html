@@ -18,31 +18,30 @@
 
 
 {% for key, value in projecties.items %}
-{% for category_key, categoryvalue in value.items %}
+    {% for key1, value1 in value.items %}
+        <div class="row">
+            <div class="col">
+                <div class="card border-none project mb-3">
+                    <div class="card-header project mb-3">{{ key }}</div>
+                    <div class="card-body project">
+                        <div class="row g-3 mb-2">
+                            {% for items in value1 %}
+                            <div class="col-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><a href="/board/{{ items.project_id }}" class="link-dark stretched-link text-decoration-none">{{ items.project_name }}</a></h5>
+                                        <p class="card-text">{{ items.description }}</p>
+                                    </div>
 
-<div class="row">
-    <div class="col">
-        <div class="card border-none project mb-3">
-
-          <div class="card-header project mb-3">{{ category_key }}</div>
-          <div class="card-body project">
-            <div class="row g-3 mb-2">
-                <div class="col-4">
-                      {% for key1, value1 in value.items %}
-                       {% for key2 in value1 %}
-                        <div class="card">
-                            <div class="card-body">
-                            <h5 class="card-title">{{ key2.project }}</h5>
-                            <p class="card-text">{{ key2.description }}</p>
-
+                                </div>
+                            </div>
+                            {% endfor %}
                         </div>
                     </div>
-                       {% endfor %}
-                      {% endfor %}
-    </div>
-</div>
-
-{% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
 {% endfor %}
 
 {% comment %}
