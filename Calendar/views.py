@@ -1,16 +1,38 @@
 from django.shortcuts import render
+import calendar
+from datetime import date
 
-# Create your views here.
 from django.views import View
 import calendar as cd
-c = cd.Calendar(firstweekday=1)
+
+
 
 class CalendarView(View):
     def get(self, request):
-        for i in c.yeardayscalendar(2022, 2):
-            print(i)
+        loop_times = range(1, 13)
+        month_name = []
+        counter = 0
+        dict_of_month = {}
+        current_year = date.today().year
+        for month in loop_times:
+            month_name.append(cd.month_name[month])
 
-        return render(request, 'calendar/Calendartst.html', context={'i': i})
+        name_day_of_weak = cd.weekheader(3)
+        for month in list(calendar.month_name)[1:]:
+            counter += 1
+            dict_of_month[month] = []
+            dict_of_month[month].append(calendar.monthcalendar(current_year, counter))
+
+        context = {
+            'current_year': current_year,
+            'month_name': month_name,
+            'name_day_of_weak': name_day_of_weak,
+            'calendar': calendar,
+            'dict_of_month': dict_of_month,
+
+        }
+
+        return render(request, 'calendar/Calendartst.html', context)
 
     def post(self, request):
         pass
