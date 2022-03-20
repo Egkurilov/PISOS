@@ -27,6 +27,8 @@ urlpatterns = [
         path('category/add', AddCategoryView.as_view()),
         path('project/add', AddProjectView.as_view()),
 
+
+
         path('admin/login', LoginView.as_view()),
         path('admin/dashboard', DashboardView.as_view()),
         path('admin/task/type/add', TaskTypeAddView.as_view()),

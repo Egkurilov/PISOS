@@ -21,12 +21,6 @@ class Task(models.Model):
     enable = models.CharField(max_length=255, default=None, blank=True, null=True)
 
 
-class ProjectList (models.Model):
-    CI = models.CharField(max_length=255, default="CI0000000", blank=True, null=True)
-    SubSystem = models.CharField(max_length=255, default="mySubsystem", blank=True, null=True)
-    Fp_name = models.CharField(max_length=255, default="DEBET_CARD", blank=True, null=True)
-
-
 class SettingsDelay(models.Model):
     name_of_system = models.CharField(max_length=255, default="CI0000000", blank=True, null=True)
     name_of_services = models.CharField(max_length=255, default=None, blank=True, null=True)
