@@ -19,15 +19,17 @@ from django.urls import path
 
 from Admin.views import LoginView, DashboardView, TaskTypeAddView, TaskAddView
 from Calendar.views import CalendarView, AddCalendarView
-from Square.views import SquareView, AddCategoryView, AddProjectView
+from Square.views import SquareView
+from ControlPanel.views import AddCategoryView, AddProjectView, ControlPanelView
 from Board.views import BoardView
 
 urlpatterns = [
         path('', SquareView.as_view()),
+
+        path('cp', ControlPanelView.as_view()),
+
         path('category/add', AddCategoryView.as_view()),
         path('project/add', AddProjectView.as_view()),
-
-
 
         path('admin/login', LoginView.as_view()),
         path('admin/dashboard', DashboardView.as_view()),

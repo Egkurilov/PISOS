@@ -2,7 +2,7 @@ from django.db import models
 
 
 # Create your models here.
-from Square.models import Project
+from ControlPanel.models import Project
 
 
 class Settings(models.Model):

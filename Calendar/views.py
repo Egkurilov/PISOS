@@ -1,10 +1,9 @@
 from django.shortcuts import render
 import calendar
-from datetime import date
+from datetime import date, datetime
 
 from django.views import View
 import calendar as cd
-
 
 
 class CalendarView(View):
@@ -14,6 +13,9 @@ class CalendarView(View):
         counter = 0
         dict_of_month = {}
         current_year = date.today().year
+        currentMonth = datetime.now().month
+
+        only_current_calendar = calendar.monthcalendar(current_year, currentMonth)
         for month in loop_times:
             month_name.append(cd.month_name[month])
 
@@ -29,7 +31,7 @@ class CalendarView(View):
             'name_day_of_weak': name_day_of_weak,
             'calendar': calendar,
             'dict_of_month': dict_of_month,
-
+            'only_current_calendar': only_current_calendar,
         }
 
         return render(request, 'calendar/Calendartst.html', context)
