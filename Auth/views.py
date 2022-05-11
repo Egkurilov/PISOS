@@ -10,7 +10,7 @@ from Auth.models import User
 class LoginView(View):
     def get(self, request):
         if '001' in request.session:
-            return redirect('/')
+            return render(request, 'square/Square.html')
         return render(request, 'auth/login.html')
 
     def post(self, request):
@@ -22,8 +22,9 @@ class LoginView(View):
         if login.group(0) and password.group(0):
             if not User.objects.values().filter(user_login=login.group(0)):
                 return render(request, 'auth/registration.html', context={'error': 'Пользователя не существует'})
+            print("1111")
             request.session['permission'] = '001'
-            return render(request, 'controlpanel/mainPanel.html')
+            return render(request, 'square/Square.html')
 
 
 class RegisterView(View):
