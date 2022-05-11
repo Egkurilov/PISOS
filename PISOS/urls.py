@@ -22,11 +22,13 @@ from Calendar.views import CalendarView, AddCalendarView
 from Square.views import SquareView
 from ControlPanel.views import AddCategoryView, AddProjectView, ControlPanelView
 from Board.views import BoardView
+from Auth.views import RegisterView
 
 urlpatterns = [
         path('', SquareView.as_view()),
 
         path('cp', ControlPanelView.as_view()),
+        path('register', RegisterView.as_view()),
 
         path('category/add', AddCategoryView.as_view()),
         path('project/add', AddProjectView.as_view()),

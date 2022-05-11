@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'Admin',
     'Square',
     'ControlPanel',
+    'Auth',
 ]
 
 MIDDLEWARE = [

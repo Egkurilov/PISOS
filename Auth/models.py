@@ -1,0 +1,8 @@
+from django.db import models
+
+
+# Create your models here.
+class User(models.Model):
+    user_login = models.CharField(max_length=255, default=None)
+    password = models.CharField(max_length=255, default=None)
+    permission = models.CharField(max_length=255, default='001')
