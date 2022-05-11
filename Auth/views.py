@@ -4,8 +4,26 @@ from django.shortcuts import render, redirect
 from django.views import View
 
 
-# Create your views here.
 from Auth.models import User
+
+
+class LoginView(View):
+    def get(self, request):
+        if '001' in request.session:
+            return redirect('/')
+        return render(request, 'auth/login.html')
+
+    def post(self, request):
+        login = request.POST.get('login')
+        password = request.POST.get('password')
+        if login and password:
+            login = re.match(r'[а-яА-Яa-zA-Z0-9]*', login)
+            password = re.match(r'[а-яА-Яa-zA-Z0-9]*', password)
+        if login.group(0) and password.group(0):
+            if not User.objects.values().filter(user_login=login.group(0)):
+                return render(request, 'auth/registration.html', context={'error': 'Пользователя не существует'})
+            request.session['permission'] = '001'
+            return render(request, 'controlpanel/mainPanel.html')
 
 
 class RegisterView(View):
@@ -24,5 +42,6 @@ class RegisterView(View):
             if User.objects.values().filter(user_login=login.group(0)):
                 return render(request, 'auth/registration.html', context={'error': 'пользователь существует'})
             User.objects.create(user_login=login.group(0), password=password.group(0), permission='001')
+            request.session['permission'] = '001'
             return render(request, 'auth/login.html')
         return render(request, 'auth/registration.html')

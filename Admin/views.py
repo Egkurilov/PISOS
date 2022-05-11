@@ -20,6 +20,7 @@ class DashboardView(View):
 
 class LoginView(View):
     def get(self, request):
+
         if 'is_admin' in request.session:
             return redirect('/admin/dashboard')
         return render(request, 'admin/Login.html')
